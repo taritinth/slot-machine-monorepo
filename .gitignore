@@ -1,3 +1,5 @@
 #Excluding all node_modules and .env at the whole project level
 **/.env
 **/node_modules/
+dist/
+.DS_Store
