@@ -47,7 +47,7 @@ export const Reel: React.FC = () => {
             className="absolute top-[-2.5%] right-[-0.5%] w-[15%] aspect-[90/34.41]"
           />
           <div className="flex justify-center items-center h-full p-[6%]">
-            <div className="relative flex justify-center items-center h-full w-full py-[3%] bg-[#513569] overflow-hidden" style={{
+            <div className="relative flex justify-center items-center h-full w-full py-[3%] overflow-hidden bg-gradient-to-b from-[rgba(130,81,161,1)] to-[rgba(91,61,114,1)]" style={{
               paddingInline: "5%",
               gap: "5%",
             }}>
