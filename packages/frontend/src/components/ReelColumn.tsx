@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
-import { SYMBOL_SPACING } from './Reel';
+import { SYMBOL_SPACING } from "./Reel";
 
 interface ReelColumnProps {
   reelSymbols: string[];
   animationKeyframes: number[];
   times: number[];
   duration: number;
+  symbolHeight: number;
   onSymbolHeightChange: (height: number) => void;
 }
 
@@ -16,6 +17,7 @@ export const ReelColumn: React.FC<ReelColumnProps> = ({
   animationKeyframes,
   times,
   duration,
+  symbolHeight,
   onSymbolHeightChange,
 }) => {
   const symbolRef = useRef<HTMLDivElement>(null);
@@ -29,22 +31,17 @@ export const ReelColumn: React.FC<ReelColumnProps> = ({
     };
 
     handleWindowResize();
-    window.addEventListener('resize', handleWindowResize)
+    window.addEventListener("resize", handleWindowResize);
 
-    return () => window.removeEventListener('resize', handleWindowResize)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
 
   return (
-    <div
-      className="w-full h-full rounded-[16px] aspect-[133/230]"
-      ref={symbolRef}
-    >
+    <div ref={symbolRef} className="w-full h-full">
       <motion.div
         animate={{ y: animationKeyframes }}
         transition={{
-          type: 'linear',
+          type: "linear",
           times,
           duration,
         }}
@@ -52,10 +49,11 @@ export const ReelColumn: React.FC<ReelColumnProps> = ({
         {reelSymbols.map((symbol, idx) => (
           <div
             key={idx}
-            className="flex items-center justify-center text-[72px] rounded-[16px] bg-[#bd90dc] bg-cover aspect-[133/230]"
+            className="flex items-center justify-center rounded-[16px] bg-[#bd90dc] bg-cover"
             style={{
-              height: "100%",
-              marginBottom: symbol === "empty" ? 0 : SYMBOL_SPACING,
+              width: "100%",
+              height: symbolHeight,
+              marginBottom: SYMBOL_SPACING,
               backgroundImage: "url('src/assets/slot-reel-bg.png')",
             }}
           >
