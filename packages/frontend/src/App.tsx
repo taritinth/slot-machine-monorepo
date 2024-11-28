@@ -1,7 +1,8 @@
 import React from 'react';
+import { Reel } from './components/Reel';
 
 function App() {
-  return <>Hello</>;
+  return <Reel />;
 }
 
 export default App;
